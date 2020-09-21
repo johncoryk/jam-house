@@ -1,0 +1,19 @@
+{
+  "name": "jam-house",
+  "version": "1.0.0",
+  "description": "App that connects game creators through game jams.",
+  "main": "index.js",
+  "repository": "https://github.com/johncoryk/jam-house.git",
+  "author": "johncoryk <coryk0789@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.6.1"
+  },
+  "scripts": {
+    "dev": "nodemon server.js"
+  }
+}
