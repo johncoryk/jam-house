@@ -59,7 +59,7 @@ const jamsController = {
   },
 
   delete(req, res, next) {
-    Jam.getById(req.parmas.id)
+    Jam.getById(req.params.id)
       .then(jam => jam.delete())
       .then(() => {
         res.json({
