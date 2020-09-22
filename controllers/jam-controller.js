@@ -19,6 +19,7 @@ const jamsController = {
       duration: req.body.duration,
       is_open: req.body.is_open,
       start_date: req.body.start_date,
+      creator_id: req.user.id,
     })
       .save()
       .then(jam => {

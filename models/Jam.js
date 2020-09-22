@@ -38,8 +38,8 @@ class Jam {
     return db
       .one(
         `INSERT INTO jams
-        (title, description, duration, is_open, start_date)
-        VALUES ($/title/, $/description/, $/duration/, $/is_open/, $/start_date/)
+        (title, description, duration, is_open, start_date, creator_id)
+        VALUES ($/title/, $/description/, $/duration/, $/is_open/, $/start_date/, $/creator_id/)
         RETURNING *`,
         this
       )
