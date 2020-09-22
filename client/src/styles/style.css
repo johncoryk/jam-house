@@ -182,6 +182,7 @@ button:hover {
   text-transform: uppercase;
   margin-left: 0.2rem;
   color: var(--dark-grey);
+  font-size: 0.9rem;
 }
 
 .jam-card-title {
