@@ -29,7 +29,21 @@ const usersController = {
       .then(user => {
         req.login(user, err => {
           if (err) return next(err);
-          res.redirect('/user');
+          res.json({
+            message: 'User was created!',
+            user,
+          });
+        });
+      })
+      .catch(next);
+  },
+
+  delete(req, res, next) {
+    User.findById(req.params.id)
+      .then(user => user.delete())
+      .then(() => {
+        res.json({
+          message: 'User deleted!',
         });
       })
       .catch(next);

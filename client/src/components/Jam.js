@@ -9,26 +9,29 @@ export default class Controller extends Component {
       title: props.jam.title,
       description: props.jam.description,
       duration: props.jam.duration,
-      isOpen: props.jam.is_open,
+      isOpen: null,
       startDate: props.jam.start_date,
     };
 
-    this.getTimeRemaining = this.getTimeRemaining.bind(this);
+    this.formatEndDate = this.formatEndDate.bind(this);
   }
 
-  getTimeRemaining = startDate => {
-    const endDate = moment(startDate)
-      .add(this.state.duration, 'd')
-      .format('LL');
+  formatEndDate = startDate => {
+    return moment(startDate).add(this.state.duration, 'd').format('LL');
+  };
+
+  componentDidMount() {
+    const endDate = this.formatEndDate(this.state.startDate);
     if (endDate < moment(new Date()).format('LL')) {
       this.setState({
         isOpen: false,
       });
-      return `Ended: ${endDate}`;
     } else {
-      return `Ends: ${endDate}`;
+      this.setState({
+        isOpen: true,
+      });
     }
-  };
+  }
 
   render() {
     return (
@@ -42,7 +45,11 @@ export default class Controller extends Component {
             <div className='jam-card-join'>
               <button>{this.state.isOpen === true ? 'Open' : 'Closed'}</button>
               <button>Join</button>
-              <p>{this.getTimeRemaining(this.state.startDate)}</p>
+              <p>
+                {this.state.isOpen === true
+                  ? `Ends: ${this.formatEndDate(this.state.startDate)}`
+                  : `Ended: ${this.formatEndDate(this.state.startDate)}`}
+              </p>
             </div>
           </article>
         ) : (

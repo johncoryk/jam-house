@@ -17,6 +17,13 @@ class User {
       });
   }
 
+  static findById(id) {
+    return db.oneOrNone('SELECT * FROM users WHERE id = $1', id).then(user => {
+      if (user) return new this(user);
+      else throw new Error('User not found');
+    });
+  }
+
   save() {
     return db
       .one(
@@ -35,6 +42,14 @@ class User {
       .then(jams => {
         return jams.map(jam => new Jam(jam));
       });
+  }
+
+  delete() {
+    return db.none(
+      `DELETE FROM users
+      WHERE id = $1`,
+      this.id
+    );
   }
 }
 

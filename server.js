@@ -12,7 +12,7 @@ const usersRouter = require('./routes/user-routes');
 const app = express();
 require('dotenv').config();
 
-app.use(methodOverride('_method'));
+// app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,9 +34,8 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 app.get('/', (req, res) => res.send('hello'));
 
-app.use('/auth', authRouter);
-app.use('/user', usersRouter);
-
+app.use('/api/auth', authRouter);
+app.use('/api/user', usersRouter);
 app.use('/api/jams', jamsRouter);
 
 app.use('*', (req, res) => {

@@ -8,6 +8,7 @@ export default class MainPage extends Component {
   render() {
     return (
       <main>
+        <h4>User: {this.props.currentUser}</h4>
         <div className='four-square'>
           <IconContext.Provider value={{ style: { fontSize: '150px' } }}>
             <div className='nav-cards' id='create-jam'>
@@ -20,10 +21,12 @@ export default class MainPage extends Component {
                 <h3>Join a jam</h3>
               </div>
             </Link>
-            <div className='nav-cards' id='dashboard'>
-              <GrConfigure className='icon' />
-              <h3>Dashboard</h3>
-            </div>
+            <Link to='/dashboard'>
+              <div className='nav-cards' id='dashboard'>
+                <GrConfigure className='icon' />
+                <h3>Dashboard</h3>
+              </div>
+            </Link>
             <div className='nav-cards' id='logout'>
               <GrPower className='icon' />
               <h3>Log in/out</h3>

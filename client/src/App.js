@@ -16,7 +16,17 @@ export default class App extends Component {
           <Route
             exact
             path='/jams'
-            render={() => <Controller currentPage='index' />}
+            render={() => <Controller props={this.state} currentPage='index' />}
+          />
+          <Route
+            exact
+            path='/dashboard'
+            render={() => <Controller currentPage='dashboard' />}
+          />
+          <Route
+            exact
+            path='/login'
+            render={() => <Controller currentPage='login' />}
           />
         </div>
         <Footer />
