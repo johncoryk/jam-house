@@ -8,7 +8,9 @@ export default class MainPage extends Component {
   render() {
     return (
       <main>
-        <h4>User: {this.props.currentUser}</h4>
+        <h4>
+          User: {this.props.currentUser && this.props.currentUser.username}
+        </h4>
         <div className='four-square'>
           <IconContext.Provider value={{ style: { fontSize: '150px' } }}>
             <div className='nav-cards' id='create-jam'>

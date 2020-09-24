@@ -12,12 +12,10 @@ export default class Controller extends React.Component {
       allJams: null,
       dataLoaded: false,
       currentPage: props.currentPage,
-      isLoggedIn: false,
-      currentUser: null,
+      currentUser: props.currentUser,
     };
 
     this.decideWhichToRender = this.decideWhichToRender.bind(this);
-    this.authSubmit = this.authSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -39,26 +37,6 @@ export default class Controller extends React.Component {
         dataLoaded: true,
       });
     }
-    this.decideWhichToRender = this.decideWhichToRender.bind(this);
-  }
-
-  authSubmit(e, route, method, data) {
-    e.preventDefault();
-    fetch(`api/${route}`, {
-      method: method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then(res => {
-      res.json().then(data =>
-        this.setState({
-          isLoggedIn: true,
-          currentUser: data.user,
-          currentPage: 'dashboard',
-        })
-      );
-    });
   }
 
   decideWhichToRender() {
@@ -71,7 +49,7 @@ export default class Controller extends React.Component {
           />
         );
       case 'dashboard':
-        return <Dashboard currentUser={this.state.currentUser} />;
+        return <Dashboard currentUser={this.props.currentUser} />;
       case 'login':
         return <Login authSubmit={this.authSubmit} />;
       default:
