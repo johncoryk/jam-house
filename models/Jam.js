@@ -7,7 +7,8 @@ class Jam {
     this.description = jam.description;
     this.duration = jam.duration;
     this.is_open = jam.is_open;
-    this.start_date = jam.start_date || new Date();
+    this.start_date = jam.start_date || jam.startDate || new Date();
+    this.creator_id = jam.creator_id;
   }
 
   static getAll() {

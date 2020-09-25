@@ -13,12 +13,13 @@ const jamsController = {
   },
 
   create(req, res, next) {
+    console.log(req.body);
     new Jam({
       title: req.body.title,
       description: req.body.description,
       duration: req.body.duration,
       is_open: req.body.is_open,
-      start_date: req.body.start_date,
+      start_date: req.body.startDate,
       creator_id: req.user.id,
     })
       .save()

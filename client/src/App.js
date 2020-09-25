@@ -130,6 +130,16 @@ export default class App extends Component {
           />
           <Route
             exact
+            path='/jam/new'
+            render={() => (
+              <Controller
+                currentPage='create jam'
+                currentUser={this.state.currentUser}
+              />
+            )}
+          />
+          <Route
+            exact
             path='/login'
             render={() =>
               this.state.currentUser ? (

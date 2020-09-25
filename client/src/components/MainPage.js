@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route, Redirect } from 'react-router-dom';
-
-import Login from './Login';
+import { Link } from 'react-router-dom';
 
 import { IconContext } from 'react-icons';
 import { GrGamepad, GrBrush, GrConfigure, GrPower } from 'react-icons/gr';
@@ -15,10 +13,12 @@ export default class MainPage extends Component {
         </h4>
         <div className='four-square'>
           <IconContext.Provider value={{ style: { fontSize: '150px' } }}>
-            <div className='nav-cards' id='create-jam'>
-              <GrBrush className='icon' />
-              <h3>Create a jam</h3>
-            </div>
+            <Link to='/jam/new'>
+              <div className='nav-cards' id='create-jam'>
+                <GrBrush className='icon' />
+                <h3>Create a jam</h3>
+              </div>
+            </Link>
             <Link to='/jams'>
               <div className='nav-cards' id='join-jam'>
                 <GrGamepad className='icon' />
