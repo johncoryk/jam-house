@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Jams from './Jams';
-import Login from './Login';
 import Dashboard from './Dashboard';
 
 export default class Controller extends React.Component {
@@ -28,10 +27,6 @@ export default class Controller extends React.Component {
             dataLoaded: true,
           });
         });
-    } else if (this.state.currentPage === 'login') {
-      this.setState({
-        dataLoaded: true,
-      });
     } else if (this.state.currentPage === 'dashboard') {
       this.setState({
         dataLoaded: true,
@@ -50,8 +45,6 @@ export default class Controller extends React.Component {
         );
       case 'dashboard':
         return <Dashboard currentUser={this.props.currentUser} />;
-      case 'login':
-        return <Login authSubmit={this.authSubmit} />;
       default:
         return <Redirect push to='/' />;
     }

@@ -7,7 +7,6 @@ const usersController = {
       .findUserJams()
       .then(jams => {
         res.json({
-          message: 'Put a user profile on this route',
           data: {
             user: req.user,
             jams,

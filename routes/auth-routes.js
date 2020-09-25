@@ -1,8 +1,8 @@
-const express = require('express');
-const authRouter = express.Router();
-
+const authRouter = require('express').Router();
 const passport = require('../utils/auth/local');
+const usersController = require('../controllers/user-controller');
 
+authRouter.post('/register', usersController.create);
 authRouter.post('/login', passport.authenticate('local'), (req, res) => {
   res.send({
     user: {
@@ -29,7 +29,9 @@ authRouter.get('/verify', (req, res) => {
 
 authRouter.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('back');
+  res.send({
+    message: 'Logout success!',
+  });
 });
 
 module.exports = authRouter;

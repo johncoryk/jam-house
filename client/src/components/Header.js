@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ logoutSubmit }) => {
   return (
     <header className='header'>
       <div className='header-content'>
@@ -17,6 +17,9 @@ const Header = () => {
               <NavLink activeClassName='active' exact to='/game-search'>
                 Search Games
               </NavLink>
+            </li>
+            <li>
+              <button onClick={() => logoutSubmit()}>Logout</button>
             </li>
           </ul>
         </div>

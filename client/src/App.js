@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  useHistory,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Controller from './components/Controller';
 import Footer from './components/Footer';
 import MainPage from './components/MainPage';
-import Dashboard from './components/Dashboard';
+import Register from './components/Register';
 import Login from './components/Login';
 
 export default class App extends Component {
@@ -20,33 +15,17 @@ export default class App extends Component {
       currentUser: null,
     };
 
-    this.authSubmit = this.authSubmit.bind(this);
-  }
-
-  authSubmit(e, route, method, data) {
-    e.preventDefault();
-    fetch(`api/${route}`, {
-      method: method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then(res => {
-      res.json().then(data =>
-        this.setState({
-          currentUser: data.user,
-        })
-      );
-    });
+    this.loginSubmit = this.loginSubmit.bind(this);
+    this.registerSubmit = this.registerSubmit.bind(this);
+    this.logoutSubmit = this.logoutSubmit.bind(this);
   }
 
   componentDidMount() {
-    fetch('/api/auth/verify')
+    fetch('/api/auth/verify', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         if (data) {
           this.setState({
-            isLoggedIn: true,
             currentUser: data.user,
           });
         }
@@ -54,10 +33,66 @@ export default class App extends Component {
       .catch(err => console.log(err));
   }
 
+  loginSubmit(e, data) {
+    e.preventDefault();
+    fetch(`/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    })
+      .then(res => {
+        res.json().then(data =>
+          this.setState({
+            currentUser: data.user,
+          })
+        );
+      })
+      .catch(err => console.log(err));
+  }
+
+  registerSubmit(e, data) {
+    e.preventDefault();
+    fetch(`/api/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          currentUser: data.user,
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  logoutSubmit() {
+    fetch(`/api/auth/logout`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then(res => res.json())
+      .then(() => {
+        this.setState({
+          currentUser: null,
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Router>
-        <Header />
+        <Header logoutSubmit={this.logoutSubmit} />
         <div className='main-content'>
           <Route
             exact
@@ -67,7 +102,12 @@ export default class App extends Component {
           <Route
             exact
             path='/jams'
-            render={() => <Controller props={this.state} currentPage='index' />}
+            render={() => (
+              <Controller
+                currentUser={this.state.currentUser}
+                currentPage='index'
+              />
+            )}
           />
           <Route
             exact
@@ -82,9 +122,24 @@ export default class App extends Component {
           <Route
             exact
             path='/login'
-            render={() => (
-              <Controller currentPage='login' authSubmit={this.authSubmit} />
-            )}
+            render={() =>
+              this.state.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <Login loginSubmit={this.loginSubmit} />
+              )
+            }
+          />
+          <Route
+            exact
+            path='/register'
+            render={() =>
+              this.state.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <Register registerSubmit={this.registerSubmit} />
+              )
+            }
           />
         </div>
         <Footer />

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class Dashboard extends Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <main>
+        {!this.props.currentUser && <Redirect to='/' />}
         <h1>{this.props.currentUser && this.props.currentUser.username}</h1>
       </main>
     );

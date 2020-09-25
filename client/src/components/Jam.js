@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 
 export default class Controller extends Component {
