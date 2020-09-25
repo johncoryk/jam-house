@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
+
+import Login from './Login';
 
 import { IconContext } from 'react-icons';
 import { GrGamepad, GrBrush, GrConfigure, GrPower } from 'react-icons/gr';
@@ -29,10 +31,20 @@ export default class MainPage extends Component {
                 <h3>Dashboard</h3>
               </div>
             </Link>
-            <div className='nav-cards' id='logout'>
-              <GrPower className='icon' />
-              <h3>Log in/out</h3>
-            </div>
+            <Link to={!this.props.currentUser && '/login'}>
+              <div
+                onClick={
+                  this.props.currentUser
+                    ? () => this.props.logoutSubmit()
+                    : null
+                }
+                className='nav-cards'
+                id='logout'
+              >
+                <GrPower className='icon' />
+                <h3>Log in/out</h3>
+              </div>
+            </Link>
           </IconContext.Provider>
         </div>
       </main>

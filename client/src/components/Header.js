@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = ({ logoutSubmit }) => {
+const Header = ({ logoutSubmit, currentUser }) => {
   return (
     <header className='header'>
       <div className='header-content'>
@@ -18,9 +18,11 @@ const Header = ({ logoutSubmit }) => {
                 Search Games
               </NavLink>
             </li>
-            <li>
-              <button onClick={() => logoutSubmit()}>Logout</button>
-            </li>
+            {currentUser && (
+              <li>
+                <button onClick={() => logoutSubmit()}>Logout</button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

@@ -92,12 +92,21 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <Header logoutSubmit={this.logoutSubmit} />
+        <Header
+          currentUser={this.state.currentUser}
+          logoutSubmit={this.logoutSubmit}
+        />
         <div className='main-content'>
           <Route
             exact
             path='/'
-            render={() => <MainPage currentUser={this.state.currentUser} />}
+            render={() => (
+              <MainPage
+                loginSubmit={this.loginSubmit}
+                logoutSubmit={this.logoutSubmit}
+                currentUser={this.state.currentUser}
+              />
+            )}
           />
           <Route
             exact
