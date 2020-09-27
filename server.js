@@ -33,7 +33,7 @@ app.use(passport.session());
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
-app.get('/', (req, res) => res.send('hello'));
+app.get('/', (req, res) => res.send('index'));
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', usersRouter);
