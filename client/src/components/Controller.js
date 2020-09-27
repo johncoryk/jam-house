@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Jams from './Jams';
+import JamPage from './JamPage';
 import Dashboard from './Dashboard';
 import CreateJam from './CreateJam';
 
@@ -11,8 +12,10 @@ export default class Controller extends React.Component {
     this.state = {
       allJams: null,
       dataLoaded: false,
-      currentPage: props.currentPage,
-      currentUser: props.currentUser,
+      currentPage: this.props.currentPage,
+      currentUser: this.props.currentUser,
+      jamId: this.props.jamId || null,
+      currentJam: null,
     };
 
     this.decideWhichToRender = this.decideWhichToRender.bind(this);
@@ -37,6 +40,15 @@ export default class Controller extends React.Component {
       this.setState({
         dataLoaded: true,
       });
+    } else if (this.state.currentPage === 'show') {
+      fetch(`/api/jams/${this.state.jamId}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            currentJam: data.jam,
+            dataLoaded: true,
+          });
+        });
     }
   }
 
@@ -70,9 +82,11 @@ export default class Controller extends React.Component {
         return (
           <CreateJam
             createJam={this.createJam}
-            currentUser={this.props.currentUser}
+            currentUser={this.state.currentUser}
           />
         );
+      case 'show':
+        return <JamPage currentJam={this.state.currentJam} />;
       default:
         return <Redirect push to='/' />;
     }

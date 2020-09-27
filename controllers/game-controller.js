@@ -1,74 +1,74 @@
-const Jam = require('../models/Jam');
+const Game = require('../models/Game');
 
-const jamsController = {
+const gamesController = {
   index(req, res, next) {
-    Jam.getAll()
-      .then(jams => {
+    Game.getAll(req.params.id)
+      .then(games => {
         res.json({
           message: 'ok',
-          jams,
+          games,
         });
       })
       .catch(next);
   },
 
   create(req, res, next) {
-    new Jam({
+    console.log(req.body);
+    new Game({
       title: req.body.title,
       description: req.body.description,
-      duration: req.body.duration,
-      start_date: req.body.startDate,
-      creator_id: req.user.id,
+      genre: req.body.genre,
+      creator_id: req.body.creator_id,
+      jam_id: req.params.id,
     })
       .save()
-      .then(jam => {
+      .then(game => {
         res.status(201).json({
-          message: 'Jam create successfully!',
-          jam,
+          message: 'game create successfully!',
+          game,
         });
       })
       .catch(next);
   },
 
   show(req, res, next) {
-    Jam.getById(req.params.id)
-      .then(jam => {
+    Game.getById(req.params.id)
+      .then(game => {
         res.json({
           message: 'ok',
-          jam,
+          game,
         });
-        console.log(jam);
       })
       .catch(next);
   },
 
   update(req, res, next) {
-    Jam.getById(req.params.id)
-      .then(jam => {
-        jam.update({
+    Game.getById(req.params.id)
+      .then(game => {
+        game.update({
           title: req.body.title,
           description: req.body.description,
         });
       })
-      .then(jam => {
+      .then(game => {
         res.json({
-          message: 'Jam updated!',
-          jam,
+          message: 'game updated!',
+          game,
         });
       })
       .catch(next);
   },
 
   delete(req, res, next) {
-    Jam.getById(req.params.id)
-      .then(jam => jam.delete())
+    Game.getById(req.params.id)
+      .then(game => game.delete())
       .then(() => {
         res.json({
-          message: 'Jam deleted!',
+          message: 'game deleted!',
         });
       })
       .catch(next);
   },
 };
 
-module.exports = jamsController;
+module.exports = gamesController;

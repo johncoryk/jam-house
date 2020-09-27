@@ -13,9 +13,6 @@ export default class Jams extends Component {
   render() {
     return (
       <main className='jam-cards-flex'>
-        <p>
-          {this.props.currentUser && `User: ${this.props.currentUser.username}`}
-        </p>
         {this.state.allJams
           ? this.state.allJams.map(jam => {
               return <Jam key={jam.id} jam={jam} />;

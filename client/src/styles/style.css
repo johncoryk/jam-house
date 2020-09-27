@@ -30,7 +30,11 @@ a {
 }
 
 a:hover {
-  color: #fff;
+  color: var(--light-green);
+}
+
+.active {
+  color: var(--light-green);
 }
 
 button {
@@ -114,7 +118,7 @@ button:hover {
 .four-square div {
   background-color: var(--light-green);
   height: 400px;
-  width: 350px;
+  width: 500px;
   margin: 0 auto;
   transition: 200ms;
 }

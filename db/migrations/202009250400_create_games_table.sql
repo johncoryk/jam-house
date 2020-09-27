@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS games (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255)  NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  genre VARCHAR(255) NOT NULL,
+  creator_id INTEGER REFERENCES users(id),
+  jam_id INTEGER REFERENCES jams(id)
+);

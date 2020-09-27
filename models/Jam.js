@@ -6,7 +6,6 @@ class Jam {
     this.title = jam.title;
     this.description = jam.description;
     this.duration = jam.duration;
-    this.is_open = jam.is_open;
     this.start_date = jam.start_date || jam.startDate || new Date();
     this.creator_id = jam.creator_id;
   }
@@ -39,8 +38,8 @@ class Jam {
     return db
       .one(
         `INSERT INTO jams
-        (title, description, duration, is_open, start_date, creator_id)
-        VALUES ($/title/, $/description/, $/duration/, $/is_open/, $/start_date/, $/creator_id/)
+        (title, description, duration, start_date, creator_id)
+        VALUES ($/title/, $/description/, $/duration/, $/start_date/, $/creator_id/)
         RETURNING *`,
         this
       )

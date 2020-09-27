@@ -8,6 +8,7 @@ const passport = require('passport');
 const jamsRouter = require('./routes/jam-routes');
 const authRouter = require('./routes/auth-routes');
 const usersRouter = require('./routes/user-routes');
+const gamesRouter = require('./routes/game-routes');
 
 const app = express();
 require('dotenv').config();
@@ -37,6 +38,7 @@ app.get('/', (req, res) => res.send('hello'));
 app.use('/api/auth', authRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/jams', jamsRouter);
+app.use('/api/games', gamesRouter);
 
 app.use('*', (req, res) => {
   res.status(404).send({

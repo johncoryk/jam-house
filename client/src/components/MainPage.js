@@ -8,9 +8,6 @@ export default class MainPage extends Component {
   render() {
     return (
       <main>
-        <h4>
-          User: {this.props.currentUser && this.props.currentUser.username}
-        </h4>
         <div className='four-square'>
           <IconContext.Provider value={{ style: { fontSize: '150px' } }}>
             <Link to='/jam/new'>
@@ -31,7 +28,7 @@ export default class MainPage extends Component {
                 <h3>Dashboard</h3>
               </div>
             </Link>
-            <Link to={!this.props.currentUser && '/login'}>
+            <Link to={!this.props.currentUser ? '/login' : '/'}>
               <div
                 onClick={
                   this.props.currentUser
