@@ -26,9 +26,11 @@ const Header = ({ logoutSubmit, currentUser }) => {
               </NavLink>
             </li>
             {currentUser ? (
-              <li>
-                <button onClick={() => logoutSubmit()}>Logout</button>
-              </li>
+              <Link to='/'>
+                <li>
+                  <button onClick={() => logoutSubmit()}>Logout</button>
+                </li>
+              </Link>
             ) : (
               <NavLink to='/login'>
                 <li>

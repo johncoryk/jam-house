@@ -3,7 +3,7 @@ const jamsRouter = require('express').Router();
 const authHelpers = require('../utils/auth/auth-helpers');
 
 jamsRouter.get('/', jamsController.index);
-jamsRouter.post('/', authHelpers.loginRequired, jamsController.create);
+jamsRouter.post('/new', authHelpers.loginRequired, jamsController.create);
 
 jamsRouter.get('/:id([0-9]+)', jamsController.show);
 

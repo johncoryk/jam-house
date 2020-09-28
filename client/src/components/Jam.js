@@ -45,9 +45,11 @@ export default class Jam extends Component {
             </div>
             <div className='jam-card-join'>
               <button>{this.state.isOpen === true ? 'Open' : 'Closed'}</button>
-              <Link to={`/jam/${this.state.id}`}>
-                <button>Info</button>
-              </Link>
+              {this.props.currentUser && (
+                <Link to={`/jam/${this.state.id}`}>
+                  <button>Info</button>
+                </Link>
+              )}
               <p>
                 {this.state.isOpen === true
                   ? `Ends: ${this.formatEndDate(this.state.startDate)}`

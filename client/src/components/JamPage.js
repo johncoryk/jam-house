@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class JamPage extends Component {
   constructor(props) {
@@ -6,6 +7,7 @@ export default class JamPage extends Component {
     this.state = {
       jam: this.props.currentJam,
       games: null,
+      joined: false,
     };
 
     this.joinJam = this.joinJam.bind(this);
@@ -13,7 +15,7 @@ export default class JamPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.jam.id);
+    console.log(this.state.jam);
     this.getGames();
   }
 
@@ -30,6 +32,7 @@ export default class JamPage extends Component {
       .then(data => {
         this.setState({
           games: [...this.state.games, data.game],
+          joined: true,
         });
       });
   }
@@ -47,6 +50,7 @@ export default class JamPage extends Component {
   render() {
     return (
       <section>
+        {this.state.joined && <Redirect to='/' />}
         <h1>{this.state.jam && this.state.jam.title}</h1>
         <h3>{this.state.jam && this.state.jam.description}</h3>
         <button onClick={() => this.joinJam()}>Join</button>

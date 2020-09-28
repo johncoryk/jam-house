@@ -54,7 +54,7 @@ export default class Controller extends React.Component {
 
   createJam(e, data) {
     e.preventDefault();
-    fetch(`/api/jams`, {
+    fetch(`/api/jams/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

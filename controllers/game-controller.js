@@ -18,7 +18,7 @@ const gamesController = {
       title: req.body.title,
       description: req.body.description,
       genre: req.body.genre,
-      creator_id: req.body.creator_id,
+      creator_id: req.user.id,
       jam_id: req.params.id,
     })
       .save()

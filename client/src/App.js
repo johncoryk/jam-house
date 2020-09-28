@@ -137,7 +137,7 @@ export default class App extends Component {
           />
           <Route
             exact
-            path='/jam/new'
+            path='/jams/new'
             render={() => (
               <Controller
                 currentPage='create jam'

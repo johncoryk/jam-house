@@ -10,12 +10,21 @@ export default class MainPage extends Component {
       <main>
         <div className='four-square'>
           <IconContext.Provider value={{ style: { fontSize: '150px' } }}>
-            <Link to='/jam/new'>
-              <div className='nav-cards' id='create-jam'>
-                <GrBrush className='icon' />
-                <h3>Create a jam</h3>
-              </div>
-            </Link>
+            {this.props.currentUser ? (
+              <Link to='/jams/new'>
+                <div className='nav-cards' id='create-jam'>
+                  <GrBrush className='icon' />
+                  <h3>Create a jam</h3>
+                </div>
+              </Link>
+            ) : (
+              <Link to='/login'>
+                <div className='nav-cards' id='create-jam'>
+                  <GrBrush className='icon' />
+                  <h3>Create a jam</h3>
+                </div>
+              </Link>
+            )}
             <Link to='/jams'>
               <div className='nav-cards' id='join-jam'>
                 <GrGamepad className='icon' />
