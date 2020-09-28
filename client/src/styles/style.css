@@ -209,6 +209,11 @@ button:hover {
   margin-bottom: 0.4rem;
 }
 
+.dates {
+  display: flex;
+  flex-direction: column;
+}
+
 /* USER FORM */
 .user-form {
   margin: 2rem auto;

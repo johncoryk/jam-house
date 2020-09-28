@@ -15,10 +15,15 @@ export default class Jam extends Component {
     };
 
     this.formatEndDate = this.formatEndDate.bind(this);
+    this.formatDate = this.formatDate.bind(this);
   }
 
   formatEndDate = startDate => {
     return moment(startDate).add(this.state.duration, 'd').format('MM/DD/YYYY');
+  };
+
+  formatDate = startDate => {
+    return moment(startDate).format('MM/DD/YYYY');
   };
 
   componentDidMount() {
@@ -54,11 +59,17 @@ export default class Jam extends Component {
                   <button>Info</button>
                 </Link>
               )}
-              <p>
-                {this.state.isOpen === true
-                  ? `Ends: ${this.formatEndDate(this.state.startDate)}`
-                  : `Ended: ${this.formatEndDate(this.state.startDate)}`}
-              </p>
+              <div className='dates'>
+                <p>
+                  {this.state.startDate &&
+                    `Start Date: ${this.formatDate(this.state.startDate)}`}
+                </p>
+                <p>
+                  {this.state.isOpen === true
+                    ? `Ends: ${this.formatEndDate(this.state.startDate)}`
+                    : `Ended: ${this.formatEndDate(this.state.startDate)}`}
+                </p>
+              </div>
             </div>
           </article>
         ) : (

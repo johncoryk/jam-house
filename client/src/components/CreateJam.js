@@ -82,6 +82,7 @@ class CreateJam extends Component {
             value={this.state.duration}
             onChange={this.handleInputChange}
           />
+          <p>Start Date:</p>
           <DatePicker
             className='text-input'
             selected={this.state.startDate}
