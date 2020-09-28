@@ -132,7 +132,7 @@ button:hover {
 .four-square div {
   background-color: var(--light-green);
   height: 400px;
-  width: 500px;
+  width: 475px;
   margin: 0 auto;
   transition: 200ms;
 }
@@ -292,4 +292,42 @@ footer a:hover {
 
 .jam-page h1 {
   margin-bottom: 0.5rem;
+}
+
+.join-btn {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 6rem;
+}
+
+@media only screen and (max-width: 1600px) {
+  .four-square div {
+    height: 400px;
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .four-square div {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .four-square div {
+    height: 300px;
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .four-square {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+  }
+  .four-square div {
+    height: 300px;
+    width: 300px;
+  }
 }

@@ -122,7 +122,11 @@ export default class App extends Component {
             exact
             path='/jam/:id'
             render={props => (
-              <Controller currentPage='show' jamId={props.match.params.id} />
+              <Controller
+                currentUser={this.state.currentUser}
+                currentPage='show'
+                jamId={props.match.params.id}
+              />
             )}
           />
           <Route

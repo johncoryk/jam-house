@@ -27,7 +27,8 @@ export default class Dashboard extends Component {
         this.setState({
           createdJams: data.data.jams,
         });
-      });
+      })
+      .catch(error => console.log(error));
   }
 
   getJoinedJams() {
@@ -41,7 +42,8 @@ export default class Dashboard extends Component {
               this.setState({
                 joinedJams: [...this.state.joinedJams, data.jam],
               });
-            });
+            })
+            .catch(error => console.log(error));
         })
       );
   }

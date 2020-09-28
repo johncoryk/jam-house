@@ -86,7 +86,12 @@ export default class Controller extends React.Component {
           />
         );
       case 'show':
-        return <JamPage currentJam={this.state.currentJam} />;
+        return (
+          <JamPage
+            currentUser={this.state.currentUser}
+            currentJam={this.state.currentJam}
+          />
+        );
       default:
         return <Redirect push to='/' />;
     }

@@ -26,6 +26,7 @@ class Register extends Component {
         onSubmit={e => this.props.registerSubmit(e, this.state)}
       >
         <input
+          required
           className='text-input'
           type='text'
           name='email'
@@ -34,6 +35,7 @@ class Register extends Component {
           onChange={this.handleInputChange}
         />
         <input
+          required
           className='text-input'
           type='text'
           name='username'
@@ -42,6 +44,7 @@ class Register extends Component {
           onChange={this.handleInputChange}
         />
         <input
+          required
           className='text-input'
           type='text'
           name='password'
