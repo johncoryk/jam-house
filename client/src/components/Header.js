@@ -22,7 +22,7 @@ const Header = ({ logoutSubmit, currentUser }) => {
             </li>
             <li>
               <NavLink activeClassName='active' exact to='/jams'>
-                All Jams
+                Browse Jams
               </NavLink>
             </li>
             {currentUser ? (

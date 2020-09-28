@@ -44,8 +44,12 @@ class CreateJam extends Component {
     return (
       <>
         {this.state.eventCreated && <Redirect to='/jams' />}
-        <form onSubmit={e => this.submitEvent(e, this.state)}>
+        <form
+          className='form-flex user-form'
+          onSubmit={e => this.submitEvent(e, this.state)}
+        >
           <input
+            className='text-input'
             type='text'
             name='title'
             placeholder='Jam Title'
@@ -53,12 +57,14 @@ class CreateJam extends Component {
             onChange={this.handleInputChange}
           />
           <textarea
+            className='text-input'
             name='description'
             placeholder='A bit about your jam!'
             value={this.state.description}
             onChange={this.handleInputChange}
           ></textarea>
           <input
+            className='text-input'
             type='number'
             name='duration'
             placeholder='Jam Duration (in days)'
@@ -66,12 +72,13 @@ class CreateJam extends Component {
             onChange={this.handleInputChange}
           />
           <DatePicker
+            className='text-input'
             selected={this.state.startDate}
             onChange={this.handleDateChange}
             name='startDate'
             dateFormat='MM-dd-yyyy'
           />
-          <input type='submit' value='Create Jam!' />
+          <input className='submit-input' type='submit' value='Create Jam!' />
         </form>
       </>
     );

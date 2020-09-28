@@ -53,6 +53,20 @@ button:hover {
   transform: scale(1.08);
 }
 
+.open {
+  background-color: var(--light-green);
+  color: var(--grey);
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+.closed {
+  background-color: rgb(133, 38, 38);
+  color: var(--grey);
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
 /* MAIN COMPONENT */
 .main-content {
   display: flex;
@@ -157,6 +171,7 @@ button:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .jam-card {
@@ -166,6 +181,7 @@ button:hover {
   flex-direction: column;
   border: 2px solid var(--light-green);
   border-radius: 5px;
+  margin-bottom: 1rem;
 }
 
 .jam-card-info {
@@ -191,4 +207,89 @@ button:hover {
 
 .jam-card-title {
   margin-bottom: 0.4rem;
+}
+
+/* USER FORM */
+.user-form {
+  margin: 2rem auto;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.form-flex input,
+.form-flex textarea {
+  margin-bottom: 1rem;
+}
+
+.text-input {
+  padding: 0.2rem 0.4rem;
+}
+
+.submit-input {
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  width: 100vw;
+  background-color: var(--light-green);
+  margin-top: 3rem;
+}
+
+footer a:hover {
+  color: #167a33;
+}
+
+.footer-container {
+  padding: 4rem 0;
+  width: 60vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: bottom;
+  color: var(--grey);
+}
+
+.footer-container ul {
+  margin-right: 3rem;
+}
+
+.footer-container li {
+  margin-bottom: 1rem;
+}
+
+/* DASHBOARD */
+.dashboard-section {
+  border-radius: 5px;
+  border: 2px solid var(--light-green);
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+}
+
+.dashboard-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-section hr {
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-section li {
+  margin-bottom: 0.3rem;
+}
+
+/* JAM PAGE */
+.jam-page {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.jam-page h1 {
+  margin-bottom: 0.5rem;
 }

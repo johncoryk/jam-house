@@ -44,8 +44,12 @@ export default class Jam extends Component {
               <p>{this.state.description}</p>
             </div>
             <div className='jam-card-join'>
-              <button>{this.state.isOpen === true ? 'Open' : 'Closed'}</button>
-              {this.props.currentUser && (
+              {this.state.isOpen === true ? (
+                <div className='open'>Open</div>
+              ) : (
+                <div className='closed'>Closed</div>
+              )}
+              {this.props.currentUser && this.state.isOpen && (
                 <Link to={`/jam/${this.state.id}`}>
                   <button>Info</button>
                 </Link>

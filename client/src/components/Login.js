@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -20,23 +21,33 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={e => this.props.loginSubmit(e, this.state)}>
-        <input
-          type='text'
-          name='username'
-          placeholder='Username'
-          value={this.state.username}
-          onChange={this.handleInputChange}
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          value={this.state.password}
-          onChange={this.handleInputChange}
-        />
-        <input type='submit' value='Login' />
-      </form>
+      <section className='user-form'>
+        <form
+          className='form-flex'
+          onSubmit={e => this.props.loginSubmit(e, this.state)}
+        >
+          <input
+            className='text-input'
+            type='text'
+            name='username'
+            placeholder='Username'
+            value={this.state.username}
+            onChange={this.handleInputChange}
+          />
+          <input
+            className='text-input'
+            type='password'
+            name='password'
+            placeholder='Password'
+            value={this.state.password}
+            onChange={this.handleInputChange}
+          />
+          <input className='submit-input' type='submit' value='Login' />
+        </form>
+        <p>
+          Don't have an account? <Link to='/register'>Sign up here!</Link>
+        </p>
+      </section>
     );
   }
 }

@@ -5,6 +5,7 @@ const authHelpers = require('../utils/auth/auth-helpers');
 
 usersRouter.post('/', usersController.create);
 usersRouter.get('/', authHelpers.loginRequired, usersController.index);
+usersRouter.get('/games', authHelpers.loginRequired, usersController.showGames);
 
 usersRouter.delete('/:id([0-9]+)', usersController.delete);
 

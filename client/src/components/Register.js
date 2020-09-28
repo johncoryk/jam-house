@@ -21,8 +21,12 @@ class Register extends Component {
 
   render() {
     return (
-      <form onSubmit={e => this.props.registerSubmit(e, this.state)}>
+      <form
+        className='form-flex user-form'
+        onSubmit={e => this.props.registerSubmit(e, this.state)}
+      >
         <input
+          className='text-input'
           type='text'
           name='email'
           placeholder='Email Address'
@@ -30,6 +34,7 @@ class Register extends Component {
           onChange={this.handleInputChange}
         />
         <input
+          className='text-input'
           type='text'
           name='username'
           placeholder='Username'
@@ -37,13 +42,14 @@ class Register extends Component {
           onChange={this.handleInputChange}
         />
         <input
+          className='text-input'
           type='text'
           name='password'
           placeholder='Password'
           value={this.state.password}
           onChange={this.handleInputChange}
         />
-        <input type='submit' value='Create Account' />
+        <input className='submit-input' type='submit' value='Create Account' />
       </form>
     );
   }

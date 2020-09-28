@@ -1,4 +1,6 @@
 const db = require('../db/config');
+const Jam = require('./Jam');
+const Game = require('./Game');
 
 class User {
   constructor({ id, username, email, password_digest }) {
@@ -41,6 +43,14 @@ class User {
       .manyOrNone(`SELECT * FROM jams WHERE creator_id = $1`, this.id)
       .then(jams => {
         return jams.map(jam => new Jam(jam));
+      });
+  }
+
+  findUserGames() {
+    return db
+      .manyOrNone(`SELECT * FROM games WHERE creator_id = $1`, this.id)
+      .then(games => {
+        return games.map(game => new Game(game));
       });
   }
 

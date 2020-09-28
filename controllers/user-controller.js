@@ -16,6 +16,20 @@ const usersController = {
       .catch(next);
   },
 
+  showGames(req, res, next) {
+    req.user
+      .findUserGames()
+      .then(games => {
+        res.json({
+          data: {
+            user: req.user,
+            games,
+          },
+        });
+      })
+      .catch(next);
+  },
+
   create(req, res, next) {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);

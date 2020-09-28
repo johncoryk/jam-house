@@ -49,7 +49,7 @@ export default class JamPage extends Component {
 
   render() {
     return (
-      <section>
+      <section className='jam-page'>
         {this.state.joined && <Redirect to='/' />}
         <h1>{this.state.jam && this.state.jam.title}</h1>
         <h3>{this.state.jam && this.state.jam.description}</h3>
