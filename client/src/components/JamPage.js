@@ -20,7 +20,6 @@ export default class JamPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.user);
     this.getGames();
     const endDate = this.formatEndDate(this.state.startDate);
     if (endDate < moment(new Date()).format('MM/DD/YYYY')) {
@@ -63,7 +62,6 @@ export default class JamPage extends Component {
         this.setState({
           games: data.games,
         });
-        console.log(this.state.games);
       });
   }
 
@@ -78,6 +76,8 @@ export default class JamPage extends Component {
             ? `Ends: ${this.formatEndDate(this.state.startDate)}`
             : `Ended: ${this.formatEndDate(this.state.startDate)}`}
         </p>
+        <i>Participants: {this.state.games && this.state.games.length}</i>
+        <br />
         {this.state.games &&
         this.state.games.find(
           game => game.creator_id === this.state.user.id
